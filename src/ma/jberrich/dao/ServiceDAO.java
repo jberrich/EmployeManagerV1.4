@@ -42,6 +42,7 @@ public class ServiceDAO implements IServiceDAO {
 	@Override
 	public List<Service> getListeServices() {
 		List<Service> services = new ArrayList<>();
+		
 		try (Connection connection = DatabaseSource.getInstance().getConnection()) {
 			List<Dept> depts = connection.createQuery(QUERY_SELECT_ALL_SERVICES).executeAndFetch(Dept.class);
 			for (Dept dept : depts) {
@@ -49,6 +50,7 @@ public class ServiceDAO implements IServiceDAO {
 				services.add(service);
 			}
 		}
+		
 		return services;
 	}
 
